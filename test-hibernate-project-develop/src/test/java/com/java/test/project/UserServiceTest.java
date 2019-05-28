@@ -1,9 +1,8 @@
 package com.java.test.project;
 
-import com.java.test.project.models.Auto;
 import com.java.test.project.models.User;
-import com.java.test.project.services.UserService;
-import com.java.test.project.services.UserServiceImpl;
+import com.java.test.project.services.userService.UserService;
+import com.java.test.project.services.userService.UserServiceImpl;
 import org.junit.Test;
 
 import java.sql.SQLException;

@@ -1,11 +1,10 @@
-package com.java.test.project.services;
+package com.java.test.project.services.userService;
 
-import com.java.test.project.dao.UserDao;
-import com.java.test.project.dao.UserDaoImpl;
+import com.java.test.project.dao.usersDao.UserDao;
+import com.java.test.project.dao.usersDao.UserDaoImpl;
 import com.java.test.project.models.Auto;
 import com.java.test.project.models.User;
 
-import javax.swing.*;
 import java.util.List;
 
 public class UserServiceImpl implements UserService {
@@ -17,17 +16,30 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findUser(int id) {
+        if(usersDao.findById(id) == null){
+            System.out.println("User id: '" + id + "' can't be found");
+        }
         return usersDao.findById(id);
     }
 
     @Override
     public void saveUser(User user) {
-        usersDao.save(user);
+        try{
+            usersDao.save(user);
+        }
+        catch (Exception e){
+            System.out.println("User wasn't saved");
+        }
     }
 
     @Override
     public void deleteUser(User user) {
-        usersDao.delete(user);
+      try {
+          usersDao.delete(user);
+      }
+        catch (Exception e){
+          System.out.println("User is " + user + " - can't be deleted");
+        }
     }
 
     @Override

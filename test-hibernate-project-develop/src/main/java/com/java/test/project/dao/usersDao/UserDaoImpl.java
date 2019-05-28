@@ -1,4 +1,4 @@
-package com.java.test.project.dao;
+package com.java.test.project.dao.usersDao;
 
 import com.java.test.project.models.Auto;
 import com.java.test.project.models.User;

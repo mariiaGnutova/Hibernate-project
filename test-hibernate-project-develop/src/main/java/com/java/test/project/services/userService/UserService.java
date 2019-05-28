@@ -1,4 +1,4 @@
-package com.java.test.project.services;
+package com.java.test.project.services.userService;
 
 import com.java.test.project.models.Auto;
 import com.java.test.project.models.User;
