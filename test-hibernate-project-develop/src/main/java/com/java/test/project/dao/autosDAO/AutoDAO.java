@@ -5,7 +5,7 @@ import com.java.test.project.models.Auto;
 import java.util.List;
 
 public interface AutoDAO {
-	Auto findById(int id);
+	Auto findById(Integer id);
 	void save(Auto auto);
 	void update(Auto auto);
 	void delete(Auto auto);

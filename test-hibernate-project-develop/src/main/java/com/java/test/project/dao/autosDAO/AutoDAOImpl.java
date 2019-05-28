@@ -10,7 +10,7 @@ import java.util.List;
 
 public class AutoDAOImpl implements AutoDAO {
 	@Override
-	public Auto findById(int id) {
+	public Auto findById(Integer id) {
 		Session session =  HibernateSessionFactoryUtil.getSessionFactory().openSession();
 		Auto auto = session.get(Auto.class, id);
 		session.close();

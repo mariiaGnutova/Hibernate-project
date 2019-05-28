@@ -11,7 +11,7 @@ public class AutoServiseImpl implements AutoService{
 	private AutoDAO autoDao = new AutoDAOImpl();
 
 	@Override
-	public Auto findById(int id) {
+	public Auto findById(Integer id) {
 		return autoDao.findById(id);
 	}
 

@@ -9,7 +9,7 @@ public class Auto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @Column(name = "model")
     private String model;
@@ -30,7 +30,7 @@ public class Auto {
         this.color = color;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 

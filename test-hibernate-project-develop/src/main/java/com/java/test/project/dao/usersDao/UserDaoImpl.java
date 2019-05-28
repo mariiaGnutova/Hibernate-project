@@ -11,7 +11,7 @@ import java.util.List;
 public class UserDaoImpl implements UserDao {
 
     @Override
-    public User findById(int id) {
+    public User findById(Integer id) {
         Session session =  HibernateSessionFactoryUtil.getSessionFactory().openSession();
         User user = session.get(User.class, id);
         session.close();
@@ -47,7 +47,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public Auto findAutoById(int id) {
+    public Auto findAutoById(Integer id) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Auto auto = session.get(Auto.class, id);
         session.close();

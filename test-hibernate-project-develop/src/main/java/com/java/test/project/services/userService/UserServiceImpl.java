@@ -15,7 +15,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findUser(int id) {
+    public User findUser(Integer id) {
         if(usersDao.findById(id) == null){
             System.out.println("User id: '" + id + "' can't be found");
         }
