@@ -2,7 +2,9 @@ package com.java.test.project.utils;
 
 import com.java.test.project.models.Auto;
 import com.java.test.project.models.User;
+import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
@@ -29,6 +31,12 @@ public class HibernateSessionFactoryUtil {
             }
         }
         return sessionFactory;
+    }
+    public static void catchException(Transaction transObj, HibernateException exObj){
+			if(transObj != null){
+				transObj.rollback();
+			}
+			exObj.printStackTrace();
     }
 
 }

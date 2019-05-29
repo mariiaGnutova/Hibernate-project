@@ -3,6 +3,7 @@ package com.java.test.project.dao.usersDao;
 import com.java.test.project.models.Auto;
 import com.java.test.project.models.User;
 import com.java.test.project.utils.HibernateSessionFactoryUtil;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -15,35 +16,61 @@ public class UserDaoImpl implements UserDao {
         Session session =  HibernateSessionFactoryUtil.getSessionFactory().openSession();
         User user = session.get(User.class, id);
         session.close();
-
         return user;
     }
 
     @Override
     public void save(User user) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction tx1 = session.beginTransaction();
+        Transaction transObj = null;
+        Session session = null;
+        try{
+        session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        transObj = session.beginTransaction();
         session.save(user);
-        tx1.commit();
-        session.close();
+        transObj.commit();
+        }
+        catch (HibernateException exObj){
+            HibernateSessionFactoryUtil.catchException(transObj, exObj);
+        }
+        finally {
+            session.close();
+        }
+
     }
 
     @Override
     public void update(User user) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction tx1 = session.beginTransaction();
+        Transaction transObj = null;
+        Session session = null;
+        try{
+        session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        transObj = session.beginTransaction();
         session.update(user);
-        tx1.commit();
-        session.close();
+        transObj.commit();
+        session.close();}
+        catch (HibernateException exObj){
+            HibernateSessionFactoryUtil.catchException(transObj, exObj);
+        }
+        finally {
+            session.close();
+        }
     }
 
     @Override
     public void delete(User user) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Transaction tx1 = session.beginTransaction();
+        Transaction transObj = null;
+        Session session = null;
+        try{
+        session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        transObj = session.beginTransaction();
         session.delete(user);
-        tx1.commit();
-        session.close();
+        transObj.commit();}
+       catch (HibernateException exObj){
+                HibernateSessionFactoryUtil.catchException(transObj, exObj);
+            }
+		finally {
+                session.close();
+            }
     }
 
     @Override

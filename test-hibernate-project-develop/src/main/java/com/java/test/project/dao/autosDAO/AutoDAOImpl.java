@@ -2,6 +2,7 @@ package com.java.test.project.dao.autosDAO;
 
 import com.java.test.project.models.Auto;
 import com.java.test.project.utils.HibernateSessionFactoryUtil;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -19,43 +20,62 @@ public class AutoDAOImpl implements AutoDAO {
 
 	@Override
 	public void save(Auto auto) {
-		Session session =  HibernateSessionFactoryUtil.getSessionFactory().openSession();
-		Transaction transaction = session.beginTransaction();
+		Transaction transObj = null;
+		Session session = null;
+		try{
+		session =  HibernateSessionFactoryUtil.getSessionFactory().openSession();
+			transObj = session.beginTransaction();
 		session.save(auto);
-		transaction.commit();
-		session.close();
+			transObj.commit();}
+		catch (HibernateException exObj){
+			HibernateSessionFactoryUtil.catchException(transObj, exObj);
+		}
+		finally {
+			session.close();
+		}
 	}
 
 	@Override
 	public void update(Auto auto) {
-		Session session =  HibernateSessionFactoryUtil.getSessionFactory().openSession();
-		Transaction transaction = session.beginTransaction();
+		Transaction transObj = null;
+		Session session = null;
+		try{
+		session =  HibernateSessionFactoryUtil.getSessionFactory().openSession();
+		transObj = session.beginTransaction();
 		session.update(auto);
-		transaction.commit();
-		session.close();
+		transObj.commit();
+		}
+		catch (HibernateException exObj){
+			HibernateSessionFactoryUtil.catchException(transObj, exObj);
+		}
+		finally {
+			session.close();
+		}
 	}
 
 	@Override
 	public void delete(Auto auto) {
-		Session session =  HibernateSessionFactoryUtil.getSessionFactory().openSession();
-		Transaction transaction = session.beginTransaction();
+		Transaction transObj = null;
+		Session session = null;
+		try{
+		session =  HibernateSessionFactoryUtil.getSessionFactory().openSession();
+		transObj = session.beginTransaction();
 		session.delete(auto);
-		transaction.commit();
-		session.close();
+		transObj.commit();}
+		catch (HibernateException exObj){
+			HibernateSessionFactoryUtil.catchException(transObj, exObj);
+		}
+		finally {
+			session.close();
+		}
 	}
 
 	@Override
 	@SuppressWarnings("unchecked")
 	public List<Auto> findAll() {
 		Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-		try{
-			List<Auto> allCars = (List<Auto>) session.createQuery("From Auto").list();
-			session.close();
-			return allCars;
-		}
-		catch (Exception e){
-			session.close();
-			return new ArrayList<>();
-		}
+		List<Auto> allCars = (List<Auto>) session.createQuery("From Auto").list();
+		session.close();
+		return allCars;
 	}
 }

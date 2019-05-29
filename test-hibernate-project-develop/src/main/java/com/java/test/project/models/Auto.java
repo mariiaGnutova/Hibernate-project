@@ -10,11 +10,7 @@ public class Auto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    @Column(name = "model")
     private String model;
-
-    @Column(name = "color")
     private String color;
 
 

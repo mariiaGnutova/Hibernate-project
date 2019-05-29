@@ -24,12 +24,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void saveUser(User user) {
-        try{
-            usersDao.save(user);
-        }
-        catch (Exception e){
-            System.out.println("User wasn't saved");
-        }
+        usersDao.save(user);
     }
 
     @Override

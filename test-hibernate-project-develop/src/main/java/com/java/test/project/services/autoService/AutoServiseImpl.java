@@ -27,13 +27,7 @@ public class AutoServiseImpl implements AutoService{
 
 	@Override
 	public void delete(Auto auto) {
-		try{
 			autoDao.delete(auto);
-		}
-		catch (NullPointerException e){
-			System.out.println("Auto is " + auto + " - can't be deleted");
-		}
-
 	}
 
 	@Override
