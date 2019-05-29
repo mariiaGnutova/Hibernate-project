@@ -10,4 +10,5 @@ public interface AutoService {
 	void update(Auto auto);
 	void delete(Auto auto);
 	List<Auto> findAllAutos();
+
 }

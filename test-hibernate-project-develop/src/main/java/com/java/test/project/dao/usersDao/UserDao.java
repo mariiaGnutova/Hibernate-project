@@ -11,5 +11,6 @@ public interface UserDao {
     void update(User user);
     void delete(User user);
     Auto findAutoById(Integer id);
+    void changeName(String name);
     List<User> findAll();
 }

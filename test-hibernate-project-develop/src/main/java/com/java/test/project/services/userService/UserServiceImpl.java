@@ -6,6 +6,7 @@ import com.java.test.project.models.Auto;
 import com.java.test.project.models.User;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class UserServiceImpl implements UserService {
 
@@ -40,6 +41,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public void updateUser(User user) {
         usersDao.update(user);
+    }
+
+    @Override
+    public void changeName(String newName) {
+      usersDao.changeName(newName);
     }
 
     @Override

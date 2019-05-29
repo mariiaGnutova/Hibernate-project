@@ -43,6 +43,7 @@ public class Main {
 
 		printAllUsers(userService);
 		printAllAutos(autoService);
+		userService.changeName("5555555");
 
 		userService.deleteUser(userService.findUser(user2.getId()));
 

@@ -10,6 +10,7 @@ public interface UserService {
     void saveUser(User user);
     void deleteUser(User user);
     void updateUser(User user);
+    void changeName(String newName);
     List<User> findAllUsers();
     Auto findAutoById(int id);
 }
